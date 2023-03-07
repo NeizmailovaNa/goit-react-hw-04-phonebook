@@ -7,8 +7,12 @@ const ContactForm = (onSubmit) => {
   const [name, setName] = useState ('');
   const [number, setNumber] = useState ('')
 
-  const inputChange = e => {
-    setName(e.currentTarget.value)
+  const inputChangeName = e => {
+    setName(e.currentTarget.value);
+  };
+
+  const inputChangeNumber = e => {
+    setNumber(e.currentTarget.value);
   };
         
   const formSubmit = e => {
@@ -28,14 +32,14 @@ const ContactForm = (onSubmit) => {
     <form className={css.form} onSubmit={formSubmit}>
       <label 
         className={css.contact_name}
-        for='name'>
+        HTMLfor='name'>
          Name
       </label>
                     
       <input 
         className={css.input_name}
         value={name}
-        onChange={inputChange}
+        onChange={inputChangeName}
         id="name"
         type="text"
         name="name"
@@ -46,14 +50,14 @@ const ContactForm = (onSubmit) => {
     
       <label 
         className={css.contact_number}
-        for='number'>
+        HTMLfor='number'>
         Number
       </label>
     
       <input
         className={css.input_number}
         value={number}
-        onChange={inputChange}
+        onChange={inputChangeNumber}
         id="number"
         type="tel"
         name="number"
