@@ -3,16 +3,16 @@ import shortid from 'shortid';
 import PropTypes from 'prop-types';
 import css from 'components/ContactForm/ContactForm.module.css'
 
-const ContactForm = (onSubmit) => {
+const ContactForm = ({onSubmit}) => {
   const [name, setName] = useState ('');
   const [number, setNumber] = useState ('')
 
   const inputChangeName = e => {
-    setName(e.currentTarget.value);
+    setName(e.target.value);
   };
 
   const inputChangeNumber = e => {
-    setNumber(e.currentTarget.value);
+    setNumber(e.target.value);
   };
         
   const formSubmit = e => {
@@ -21,7 +21,7 @@ const ContactForm = (onSubmit) => {
       id: shortid.generate(),
       name,
       number,
-    };
+    }
         
     onSubmit (newContact);
     setName ('');

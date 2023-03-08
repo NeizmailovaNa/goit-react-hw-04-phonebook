@@ -18,18 +18,16 @@ const  App = () => {
           )
         ) {
           alert(newContact.name + ' is already in contacts');
-        } else {
-          setContacts(prevState => [newContact, ...prevState.contacts]);
-        };
+        } ;
   }
 
       const filterHendler = e => {
-        setFilter(e.currentTarget.value);
+        setFilter(e.target.value);
       };
 
       const deleteItem = id => {
         setContacts(prevState => 
-          prevState.contacts.filter(contact => contact.id !== id)
+          prevState.filter(contact => contact.id !== id)
         )
       };
 
