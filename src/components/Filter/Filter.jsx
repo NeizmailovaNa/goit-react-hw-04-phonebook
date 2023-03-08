@@ -5,7 +5,7 @@ import css from 'components/Filter/Filter.module.css'
 const Filter = props => {
   return (
     <form className={css.form}>
-      <label className={css.text} for='filter'>
+      <label className={css.text} htmlFor='filter'>
         Find contacts by name:
       </label>
       <input 

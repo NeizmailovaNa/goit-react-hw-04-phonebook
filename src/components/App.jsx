@@ -6,7 +6,9 @@ import css from 'components/App.module.css'
 
 const  App = () => {
   const [contacts, setContacts] = useState (
-    () => JSON.parse(localStorage.getItem('contacts')) ?? []
+    () =>  
+      JSON.parse(localStorage.getItem('contacts')) ?? []
+    
   );
 
   const [filter, setFilter] = useState ('');
@@ -18,8 +20,11 @@ const  App = () => {
           )
         ) {
           alert(newContact.name + ' is already in contacts');
+        }  else {
+          setContacts(prevContacts => [newContact, ...prevContacts]);
         } ;
-  }
+      } ;
+  
 
       const filterHendler = e => {
         setFilter(e.target.value);

@@ -7,39 +7,49 @@ const ContactForm = ({onSubmit}) => {
   const [name, setName] = useState ('');
   const [number, setNumber] = useState ('')
 
-  const inputChangeName = e => {
-    setName(e.target.value);
+  const resetForm = () => {
+    setName('');
+    setNumber('');
+  }
+
+  const inputChange = e => {
+    const { name, value } = e.currentTarget;
+
+    switch (name) {
+      case 'name':
+        setName(value);
+        break;
+
+      case 'number':
+        setNumber(value);
+        break;
+
+      default:
+        return;
+    }
+
   };
 
-  const inputChangeNumber = e => {
-    setNumber(e.target.value);
-  };
-        
   const formSubmit = e => {
     e.preventDefault();
-    const newContact = {
-      id: shortid.generate(),
-      name,
-      number,
-    }
-        
-    onSubmit (newContact);
-    setName ('');
-    setNumber ('');
+
+    const id = shortid.generate();
+    onSubmit({id, name, number});
+    resetForm();
   };
 
   return (
     <form className={css.form} onSubmit={formSubmit}>
       <label 
         className={css.contact_name}
-        HTMLfor='name'>
+        htmlFor='name'>
          Name
       </label>
                     
       <input 
         className={css.input_name}
         value={name}
-        onChange={inputChangeName}
+        onChange={inputChange}
         id="name"
         type="text"
         name="name"
@@ -50,14 +60,14 @@ const ContactForm = ({onSubmit}) => {
     
       <label 
         className={css.contact_number}
-        HTMLfor='number'>
+        htmlFor='number'>
         Number
       </label>
     
       <input
         className={css.input_number}
         value={number}
-        onChange={inputChangeNumber}
+        onChange={inputChange}
         id="number"
         type="tel"
         name="number"
